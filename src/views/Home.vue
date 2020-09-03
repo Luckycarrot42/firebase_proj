@@ -51,10 +51,15 @@ export default {
       this.currentBeer = beer
     },
     beerUpdater(beer){
-      this.updateBeer(beer),
-      this.currentBeer.data.name = '',
-      this.currentBeer.data.price = 0,
-      this.currentBeer.data.picture = ''
+      const newBeer = {
+        data: {
+          name: beer.data.name,
+          price: beer.data.price,
+          picture: beer.data.picture
+        },
+        id: beer.id
+      }
+      this.updateBeer(newBeer)
     },
     returnLogin() { // boton al final de la pagina pára volver al login (añadido eva extra)
       this.$router.push('/login')

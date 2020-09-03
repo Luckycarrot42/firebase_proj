@@ -36,9 +36,10 @@ export default {
       if(this.currentBeer.id) { //si existe id, editamos
         this.$emit('edit-beer', this.currentBeer) 
       }else{ //si no, creamos nueva beer
-        this.createBeer()
-        this.cleanCurrentBeer
+        this.createBeer() 
       }
+      debugger
+      this.cleanCurrentBeer()
     },
     createBeer() {
       const beer = {
@@ -46,13 +47,13 @@ export default {
         price: this.currentBeer.data.price,
         picture: this.currentBeer.data.picture
       }
-      this.submitBeer(beer)  //metodo del store que realiza comunicacion con
-      this.cleanCurrentBeer    
+      this.submitBeer(beer)  //metodo del store que realiza comunicacion con  
     },
     cleanCurrentBeer() {
       this.currentBeer.data.name = '',
       this.currentBeer.data.price = 0,
       this.currentBeer.data.picture = ''
+      this.currentBeer.id = undefined
     }
   },
 }
